@@ -45,19 +45,18 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/5 p-1 md:flex">
-            {NAV_LINKS.map((link) => (
+            {NAV_LINKS?.map((link) => (
               <motion.a
-                key={link.name}
-                href={link.href}
+                key={link?.name}
+                href={link?.href}
                 className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                  activeLink === link.name.toLowerCase()
-                    ? 'bg-white/10 text-white'
-                    : 'text-slate-300 hover:text-white'
+                  activeLink === link?.name?.toLowerCase()
+                    ? 'bg-white/10 text-white' :'text-slate-300 hover:text-white'
                 }`}
-                onClick={() => setActiveLink(link.name.toLowerCase())}
+                onClick={() => setActiveLink(link?.name?.toLowerCase())}
                 whileHover={{ y: -1 }}
               >
-                {link.name}
+                {link?.name}
               </motion.a>
             ))}
           </nav>
@@ -68,7 +67,7 @@ export function Header() {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             whileTap={{ scale: 0.9 }}
           >
-            {[0, 1, 2].map((i) => (
+            {[0, 1, 2]?.map((i) => (
               <motion.div
                 key={i}
                 className="w-6 h-0.5 bg-neon-green"
@@ -98,17 +97,17 @@ export function Header() {
           }
           transition={{ duration: 0.3 }}
         >
-          {NAV_LINKS.map((link) => (
+          {NAV_LINKS?.map((link) => (
             <motion.a
-              key={link.name}
-              href={link.href}
+              key={link?.name}
+              href={link?.href}
               className="text-sm font-medium text-slate-300 transition-colors hover:text-neon-green"
               onClick={() => {
-                setActiveLink(link.name.toLowerCase());
+                setActiveLink(link?.name?.toLowerCase());
                 setIsMobileMenuOpen(false);
               }}
             >
-              {link.name}
+              {link?.name}
             </motion.a>
           ))}
         </motion.nav>

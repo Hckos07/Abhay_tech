@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   turbopack: {},
+  allowedDevOrigins: ['abhaytech1960.builtwithrocket.new'],
   webpack(config, { dev }) {
 if (dev) {
     config.module.rules.push({

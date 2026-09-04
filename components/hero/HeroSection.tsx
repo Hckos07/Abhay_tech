@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import { ChevronDown } from 'lucide-react';
@@ -111,10 +111,22 @@ export function HeroSection() {
       <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
         {/* Main Title */}
         <div className="mb-6">
-          <motion.h1 className="mb-3 text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl" custom={0} variants={titleVariants} initial="hidden" animate={isIntroDone ? 'visible' : 'hidden'}>
+          <motion.h1
+            className="mb-3 text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl"
+            custom={0}
+            variants={titleVariants}
+            initial="hidden"
+            animate={isIntroDone ? 'visible' : 'hidden'}
+          >
             Full Stack Developer
           </motion.h1>
-          <motion.p className="mx-auto mb-2 inline-block rounded-full border border-white/15 px-4 py-1 text-xs tracking-[0.2em] uppercase text-slate-300" custom={1} variants={titleVariants} initial="hidden" animate={isIntroDone ? 'visible' : 'hidden'}>
+          <motion.p
+            className="mx-auto mb-2 inline-block rounded-full border border-white/15 px-4 py-1 text-xs tracking-[0.2em] uppercase text-slate-300"
+            custom={1}
+            variants={titleVariants}
+            initial="hidden"
+            animate={isIntroDone ? 'visible' : 'hidden'}
+          >
             Building clean digital products
           </motion.p>
         </div>
@@ -129,7 +141,7 @@ export function HeroSection() {
           {PORTFOLIO_DATA.hero.subtitle}
         </motion.p>
 
-        {/* CTA Button */}
+        {/* CTA Buttons */}
         <motion.div
           className="flex flex-wrap justify-center gap-3"
           variants={buttonVariants}

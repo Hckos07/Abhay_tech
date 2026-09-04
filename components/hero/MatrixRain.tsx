@@ -6,11 +6,10 @@ import { Points, PointMaterial } from '@react-three/drei';
 import * as THREE from 'three';
 
 function MatrixParticles() {
-  const pointsRef = useRef<THREE?.Points>(null);
-  const particlesPosition = useRef(new Float32Array(300 * 3)); // 300 particles
+  const pointsRef = useRef<THREE.Points>(null);
+  const particlesPosition = useRef(new Float32Array(300 * 3));
 
   useEffect(() => {
-    // Generate random positions
     for (let i = 0; i < 300 * 3; i += 3) {
       particlesPosition.current[i] = (Math.random() - 0.5) * 2000;
       particlesPosition.current[i + 1] = (Math.random() - 0.5) * 2000;
@@ -19,20 +18,20 @@ function MatrixParticles() {
   }, []);
 
   useFrame(() => {
-    if (!pointsRef?.current) return;
+    if (!pointsRef.current) return;
 
-    const positions = particlesPosition?.current;
+    const positions = particlesPosition.current;
     for (let i = 0; i < 300; i++) {
-      positions[i * 3 + 1] -= Math.random() * 10; // Move down
-      if (positions?.[i * 3 + 1] < -1000) {
-        positions[i * 3 + 1] = 1000; // Reset to top
+      positions[i * 3 + 1] -= Math.random() * 10;
+      if (positions[i * 3 + 1] < -1000) {
+        positions[i * 3 + 1] = 1000;
       }
     }
     pointsRef.current.geometry.attributes.position.needsUpdate = true;
   });
 
   return (
-    <Points ref={pointsRef} positions={particlesPosition?.current} stride={3} frustumCulled={false}>
+    <Points ref={pointsRef} positions={particlesPosition.current} stride={3} frustumCulled={false}>
       <PointMaterial
         transparent
         color="#00ff00"

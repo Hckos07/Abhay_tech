@@ -5,6 +5,7 @@ import { AboutSection } from "@/components/sections/AboutSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { ExperienceSection } from "@/components/sections/ExperienceSection";
 import { AmbientBackground } from "@/components/layout/AmbientBackground";
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
         <div className="section-shell"><AboutSection /></div>
         <div className="section-shell"><ProjectsSection /></div>
         <div className="section-shell"><SkillsSection /></div>
+        <div className="section-shell"><ExperienceSection /></div>
         <div className="section-shell"><ContactSection /></div>
       </main>
       <Footer />

@@ -11,9 +11,7 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -22,7 +20,7 @@ export function Header() {
     <motion.header
       className={`fixed top-0 z-[300] w-full transition-all duration-300 ${
         isScrolled
-          ? 'border-b border-white/10 bg-[#080d22]/85 backdrop-blur-xl'
+          ? 'border-b border-white/10 bg-[#080d22]/90 backdrop-blur-xl'
           : 'bg-transparent'
       }`}
       initial={{ y: -100 }}
@@ -32,26 +30,26 @@ export function Header() {
       <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <motion.div
-            className="text-2xl font-bold"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Link href="#home" className="relative group">
-              <span className="text-slate-100 tracking-wide">Abhay.Tech</span>
+          <motion.div className="text-xl font-bold" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Link href="#home" className="relative group flex items-center gap-1">
+              <span className="text-neon-green font-mono">{'<'}</span>
+              <span className="text-white tracking-wide">Abhay</span>
+              <span className="text-neon-green font-mono">{'.'}</span>
+              <span className="text-neon-green tracking-wide">dev</span>
+              <span className="text-neon-green font-mono">{'/>'}</span>
               <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-neon-green transition-all duration-300 group-hover:w-full" />
             </Link>
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/5 p-1 md:flex">
+          <nav className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/5 p-1 md:flex backdrop-blur-sm">
             {NAV_LINKS?.map((link) => (
               <motion.a
                 key={link?.name}
                 href={link?.href}
-                className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 ${
                   activeLink === link?.name?.toLowerCase()
-                    ? 'bg-white/10 text-white' :'text-slate-300 hover:text-white'
+                    ? 'bg-neon-green/15 text-neon-green border border-neon-green/30' :'text-slate-300 hover:text-white hover:bg-white/5'
                 }`}
                 onClick={() => setActiveLink(link?.name?.toLowerCase())}
                 whileHover={{ y: -1 }}
@@ -60,6 +58,16 @@ export function Header() {
               </motion.a>
             ))}
           </nav>
+
+          {/* CTA */}
+          <motion.a
+            href="mailto:abhaypal1298@gmail.com"
+            className="hidden md:flex items-center gap-2 rounded-lg border border-neon-green/40 bg-neon-green/10 px-4 py-2 text-sm font-semibold text-neon-green transition-all duration-300 hover:bg-neon-green/20 hover:shadow-[0_0_15px_rgba(0,255,0,0.2)]"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            Hire Me
+          </motion.a>
 
           {/* Mobile Menu Button */}
           <motion.button
@@ -73,11 +81,7 @@ export function Header() {
                 className="w-6 h-0.5 bg-neon-green"
                 animate={
                   isMobileMenuOpen
-                    ? {
-                        rotate: i === 0 ? 45 : i === 2 ? -45 : 0,
-                        y: i === 0 ? 7 : i === 2 ? -7 : 0,
-                        opacity: i === 1 ? 0 : 1,
-                      }
+                    ? { rotate: i === 0 ? 45 : i === 2 ? -45 : 0, y: i === 0 ? 7 : i === 2 ? -7 : 0, opacity: i === 1 ? 0 : 1 }
                     : { rotate: 0, y: 0, opacity: 1 }
                 }
                 transition={{ duration: 0.3 }}
@@ -88,20 +92,17 @@ export function Header() {
 
         {/* Mobile Navigation */}
         <motion.nav
-          className="mt-4 flex flex-col gap-4 rounded-xl border border-neon-cyan/20 bg-[#0a0e27]/80 p-4 md:hidden"
+          className="mt-4 flex flex-col gap-2 rounded-xl border border-neon-green/20 bg-[#0a0e27]/90 p-4 md:hidden backdrop-blur-xl"
           initial={{ opacity: 0, height: 0 }}
-          animate={
-            isMobileMenuOpen
-              ? { opacity: 1, height: 'auto' }
-              : { opacity: 0, height: 0 }
-          }
+          animate={isMobileMenuOpen ? { opacity: 1, height: 'auto' } : { opacity: 0, height: 0 }}
           transition={{ duration: 0.3 }}
+          style={{ overflow: 'hidden' }}
         >
           {NAV_LINKS?.map((link) => (
             <motion.a
               key={link?.name}
               href={link?.href}
-              className="text-sm font-medium text-slate-300 transition-colors hover:text-neon-green"
+              className="rounded-lg px-4 py-2.5 text-sm font-medium text-slate-300 transition-colors hover:bg-neon-green/10 hover:text-neon-green"
               onClick={() => {
                 setActiveLink(link?.name?.toLowerCase());
                 setIsMobileMenuOpen(false);
@@ -110,6 +111,12 @@ export function Header() {
               {link?.name}
             </motion.a>
           ))}
+          <a
+            href="mailto:abhaypal1298@gmail.com"
+            className="mt-2 rounded-lg border border-neon-green/30 bg-neon-green/10 px-4 py-2.5 text-center text-sm font-semibold text-neon-green"
+          >
+            Hire Me
+          </a>
         </motion.nav>
       </div>
     </motion.header>

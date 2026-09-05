@@ -3,10 +3,10 @@
 import React, { useRef, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
-import * as THREE from 'three';
+import type { Points as ThreePoints } from 'three';
 
 function MatrixParticles() {
-  const pointsRef = useRef<THREE.Points>(null);
+  const pointsRef = useRef<ThreePoints>(null);
   const particlesPosition = useRef(new Float32Array(300 * 3));
 
   useEffect(() => {
@@ -17,12 +17,13 @@ function MatrixParticles() {
     }
   }, []);
 
-  useFrame(() => {
+  useFrame((_state, delta) => {
     if (!pointsRef.current) return;
 
+    const speed = delta * 600;
     const positions = particlesPosition.current;
     for (let i = 0; i < 300; i++) {
-      positions[i * 3 + 1] -= Math.random() * 10;
+      positions[i * 3 + 1] -= speed * (0.5 + Math.random() * 0.5);
       if (positions[i * 3 + 1] < -1000) {
         positions[i * 3 + 1] = 1000;
       }

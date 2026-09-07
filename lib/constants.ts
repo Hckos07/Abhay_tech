@@ -1,49 +1,39 @@
-// Color palette constants
+// Color palette constants - Light Mode
 export const COLORS = {
-  // Primary cyberpunk colors
-  primary: '#00ff00', // Neon green
-  secondary: '#00ff88', // Softer green
-  accent: '#00ffff', // Cyan
-  dark: '#ff00ff', // Magenta
-
-  // Background colors
+  primary: '#080503',
+  secondary: '#5e534a',
+  accent: '#433830',
   bg: {
-    primary: '#0a0e27', // Deep space black
-    secondary: '#0f1535', // Dark blue-black
-    tertiary: '#1a1f3a', // Card background
-    glass: 'rgba(15, 21, 53, 0.7)', // Semi-transparent
+    primary: '#fafaf9',
+    secondary: '#f3f2ee',
+    tertiary: '#ecebe7',
+    card: '#ffffff',
   },
-
-  // Text colors
   text: {
-    primary: '#e2e8f0', // Light gray
-    secondary: '#cbd5e1', // Medium gray
-    muted: '#94a3b8', // Muted gray
-    accent: '#00ff00', // Neon green
+    primary: '#080503',
+    secondary: '#433830',
+    muted: '#5e534a',
+    subtle: '#7b6f66',
   },
-
-  // Glow colors
-  glow: {
-    green: 'rgba(0, 255, 0, 0.3)',
-    cyan: 'rgba(0, 255, 255, 0.3)',
-    magenta: 'rgba(255, 0, 255, 0.3)',
+  border: {
+    default: '#dad7d0',
+    strong: '#b8b4ad',
   },
-
-  // Neon palette
-  neon: {
-    green: '#00ff00',
-    cyan: '#00ffff',
-    magenta: '#ff00ff',
-    pink: '#ff1493',
+  accent_colors: {
+    emerald: '#059669',
+    blue: '#1a56db',
+    violet: '#7c3aed',
+    amber: '#d97706',
+    rose: '#e11d48',
   },
 };
 
 // Animation timing
 export const ANIMATION_TIMING = {
-  fast: 0.2,
-  normal: 0.3,
-  slow: 0.5,
-  verySlow: 0.8,
+  fast: 0.15,
+  normal: 0.25,
+  slow: 0.4,
+  verySlow: 0.6,
 };
 
 // Navigation links
@@ -52,94 +42,170 @@ export const NAV_LINKS = [
   { name: 'About', href: '#about' },
   { name: 'Projects', href: '#projects' },
   { name: 'Skills', href: '#skills' },
+  { name: 'Experience', href: '#experience' },
   { name: 'Contact', href: '#contact' },
 ];
 
 // Social links
 export const SOCIAL_LINKS = [
-  { name: 'GitHub', url: 'https://github.com/your-username', icon: 'GitHub' },
-  { name: 'LinkedIn', url: 'https://linkedin.com/in/your-handle', icon: 'LinkedIn' },
-  { name: 'Instagram', url: 'https://instagram.com/your-handle', icon: 'Instagram' },
+  { name: 'GitHub', url: 'https://github.com/Hckos07', icon: 'GitHub' },
+  { name: 'LinkedIn', url: 'https://linkedin.com/in/abhay-pal', icon: 'LinkedIn' },
   { name: 'Email', url: 'mailto:abhaypal1298@gmail.com', icon: 'Mail' },
 ];
 
-// Portfolio content structure (user fills in later)
+// Portfolio content
 export const PORTFOLIO_DATA = {
   hero: {
-    title: 'Full Stack Developer',
-    subtitle: 'I design and ship sleek web products that feel fast, useful, and memorable.',
-    cta: 'See Featured Work',
+    name: 'Abhay Pal',
+    title: 'AI-Focused Software Engineer',
+    subtitle: 'Building production web apps & AI-powered systems — RAG pipelines, real-time backends, and clean frontend experiences.',
+    cta: 'View My Work',
+    badge: 'Open to Opportunities',
   },
 
   about: {
     title: 'About Me',
-    description: `Full-Stack Software Engineer with 2+ years of experience building scalable web applications that transform ideas into reliable digital products.`,
+    description: `AI-focused Software Engineer with 2 years of experience shipping production web apps and AI-powered systems. I work across the full stack — from Next.js frontends and Node.js backends to RAG pipelines with LangChain, FastAPI, and Pinecone. I care deeply about clean architecture, real-time systems, and building things that actually work at scale.`,
+    bio2: `Currently based in Uttar Pradesh, India. Previously built enterprise platforms at Orangutan Technologies and scalable business solutions at Software House. I thrive in Agile teams, love solving hard backend problems, and enjoy shipping products users love.`,
     photo: {
       src: '/profile.PNG',
-      alt: 'Portrait photo',
+      alt: 'Abhay Pal — AI-focused Software Engineer',
     },
     highlights: [
-      { label: 'Projects Completed', value: '10+' },
       { label: 'Years Experience', value: '2+' },
-      { label: 'Happy Clients', value: '10+' },
+      { label: 'Projects Shipped', value: '10+' },
+      { label: 'Concurrent Users Supported', value: '500+' },
     ],
   },
+
+  experience: [
+    {
+      id: 'exp-1',
+      role: 'Software Engineer',
+      company: 'Orangutan Technologies Pvt. Ltd.',
+      period: 'Aug 2025 – May 2026',
+      type: 'Full-time',
+      highlights: [
+        'Built full-stack enterprise apps with Next.js, Payload CMS, MongoDB & Redis — schema to production.',
+        'Engineered ticket lifecycle automation with category-based routing & SLA escalation — cut manual triage by ~30%.',
+        'Built real-time notification system via Redis Pub/Sub + BullMQ + SSE supporting 500+ concurrent users.',
+        'Implemented RBAC + MFA/OTP auth with session protection and expiry validation.',
+        'Containerized services with Docker; set up CI/CD pipelines via GitHub Actions.',
+        'Cut page load time ~30% via caching, code splitting, lazy loading & background job processing.',
+      ],
+      tech: ['Next.js', 'Payload CMS', 'MongoDB', 'Redis', 'BullMQ', 'SSE', 'Docker', 'GitHub Actions'],
+    },
+    {
+      id: 'exp-2',
+      role: 'Web Developer',
+      company: 'Software House',
+      period: 'June 2024 – July 2025',
+      type: 'Full-time',
+      highlights: [
+        'Built responsive business platforms with React.js, Next.js, Node.js & MongoDB.',
+        'Developed REST APIs for lead management, inquiry workflows & content automation.',
+        'Improved SEO ~20% via SSR, metadata optimization, sitemap generation & semantic HTML.',
+        'Created reusable component libraries — reduced new feature dev time by ~25%.',
+        'Integrated form validation & secure submissions, improving lead conversion reliability.',
+      ],
+      tech: ['React.js', 'Next.js', 'Node.js', 'MongoDB', 'REST APIs', 'SSR', 'SEO'],
+    },
+  ],
 
   projects: [
     {
       id: '1',
-      title: 'FloDMS - Dealer Management System',
-      description: 'Built an enterprise DMS platform end-to-end using Next.js, Payload CMS, MongoDB, and Redis. Implemented role-based ticket routing with least-load auto-assignment, SLA lifecycle automation, Redis Pub/Sub + BullMQ + SSE real-time notifications, MFA/OTP security flows, bulk Excel user imports, and analytics with pivot reports, charts, filters, and CSV export.',
-      technologies: ['Next.js', 'Payload CMS', 'MongoDB', 'Redis', 'BullMQ', 'SSE'],
+      title: 'DocuMind AI',
+      subtitle: 'RAG Document Q&A Chatbot',
+      description: 'Full-stack AI chatbot where users upload PDFs and ask questions grounded in document content. Built with Next.js 15, FastAPI, LangChain, OpenAI embeddings, and Pinecone vector storage. Features real-time streaming responses via Server-Sent Events and a modular async backend.',
+      technologies: ['Next.js 15', 'FastAPI', 'Python', 'LangChain', 'OpenAI', 'Pinecone', 'SSE'],
+      links: {
+        demo: '',
+        github: 'https://github.com/Hckos07',
+      },
+      featured: true,
+      category: 'AI / Full-Stack',
+      color: 'green' as const,
+    },
+    {
+      id: '2',
+      title: 'FloDMS',
+      subtitle: 'Enterprise Dealer Management System',
+      description: 'Enterprise DMS platform built end-to-end with Next.js, Payload CMS, MongoDB & Redis. Features role-based ticket routing with least-load auto-assignment, SLA lifecycle automation, real-time notifications via Redis Pub/Sub + BullMQ + SSE, MFA/OTP security, bulk Excel imports, and analytics with pivot reports & CSV export.',
+      technologies: ['Next.js', 'Payload CMS', 'MongoDB', 'Redis', 'BullMQ', 'SSE', 'Docker'],
       links: {
         demo: '',
         github: '',
       },
+      featured: true,
+      category: 'Enterprise',
+      color: 'cyan' as const,
     },
     {
-      id: '2',
-      title: 'Orangutan Technologies - Corporate AI Platform',
-      description: 'Built and structured the corporate platform to clearly present AI offerings like Man Friday Framework, FLO DMS, Shopify apps, and Agentic AI. Developed responsive solution sections, trust/case-study blocks, conversion-focused CTA flows, and SEO-friendly page architecture to improve discoverability and lead generation.',
+      id: '3',
+      title: 'Ranmars.com',
+      subtitle: 'Software Development Agency Website',
+      description: 'Built and structured the corporate platform for a software development consultancy — presenting services like web dev, mobile apps, MVP builds, and dedicated teams. Developed responsive service sections, trust blocks, conversion-focused CTA flows, and SEO-friendly page architecture.',
       technologies: ['Next.js', 'React.js', 'Node.js', 'SSR', 'SEO', 'Responsive UI'],
+      links: {
+        demo: 'https://ranmars.com',
+        github: '',
+      },
+      featured: false,
+      category: 'Web',
+      color: 'magenta' as const,
+    },
+    {
+      id: '4',
+      title: 'Funded Tech Street',
+      subtitle: 'FinTech Business Financing Platform',
+      description: 'Contributed to a technology-driven small business financing platform — building responsive UI components, lead capture flows, and service presentation pages. Focused on conversion-optimized layouts, performance, and clean information hierarchy for a fintech audience.',
+      technologies: ['Next.js', 'React.js', 'Tailwind CSS', 'Node.js', 'Performance Optimization'],
+      links: {
+        demo: 'https://www.fundstreet.tech',
+        github: '',
+      },
+      featured: false,
+      category: 'FinTech',
+      color: 'green' as const,
+    },
+    {
+      id: '5',
+      title: 'Orangutan Technologies',
+      subtitle: 'Corporate AI Platform',
+      description: 'Built the corporate platform to clearly present AI offerings — Man Friday Framework, FLO DMS, Shopify apps, and Agentic AI. Developed responsive solution sections, trust/case-study blocks, and SEO-friendly page architecture to improve discoverability and lead generation.',
+      technologies: ['Next.js', 'React.js', 'Node.js', 'SSR', 'SEO'],
       links: {
         demo: 'https://www.orangutantechnologies.com',
         github: '',
       },
-    },
-    {
-      id: '3',
-      title: 'Software House World - Cloud Services Website',
-      description: 'Developed a scalable corporate website experience for cloud services with productized service cards, pricing/plan visibility, CTA-driven inquiry funnels, and trust/testimonial sections. Optimized performance, information hierarchy, and reusable UI components so content updates and service expansion remain easy to manage.',
-      technologies: ['Next.js', 'React.js', 'Node.js', 'MongoDB', 'Performance Optimization', 'Component Architecture'],
-      links: {
-        demo: 'https://www.softwarehouseworld.com',
-        github: '',
-      },
+      featured: false,
+      category: 'Web',
+      color: 'cyan' as const,
     },
   ],
 
   skills: {
-    'programming languages': ['JavaScript', 'TypeScript'],
-    frontend: ['React.js', 'Next.js', 'HTML5', 'CSS3', 'Tailwind CSS'],
-    backend: ['Node.js', 'Express.js', 'REST APIs', 'SSR'],
-    'databases & caching': ['MongoDB', 'Redis'],
-    'authentication & security': ['MFA/OTP', 'RBAC', 'Session Security'],
-    'real-time systems': ['SSE', 'Redis Pub/Sub', 'BullMQ Workers'],
-    cms: ['Payload CMS'],
-    'data processing': ['Excel Parsing', 'CSV Export', 'Analytics Dashboards'],
-    'performance optimization': ['Lazy Loading', 'Code Splitting', 'Retry Logic'],
-    tools: ['Git', 'GitHub', 'Postman', 'VS Code', 'JIRA'],
-    'engineering practices': ['API Design', 'Scalable Architecture', 'Debugging'],
+    'Languages': ['JavaScript', 'TypeScript', 'Python'],
+    'Frontend': ['React.js', 'Next.js', 'HTML5', 'CSS3', 'Tailwind CSS'],
+    'Backend': ['Node.js', 'Express.js', 'FastAPI', 'REST APIs', 'SSR'],
+    'AI / LLM': ['OpenAI API', 'LangChain', 'Vector Embeddings', 'RAG Pipelines', 'Pinecone'],
+    'Databases & Caching': ['MongoDB', 'Redis', 'SQL'],
+    'Auth & Real-Time': ['JWT', 'RBAC', 'MFA/OTP', 'SSE', 'Redis Pub/Sub', 'BullMQ'],
+    'DevOps & Tools': ['Docker', 'GitHub Actions', 'CI/CD', 'Git', 'Vercel', 'JIRA', 'Postman'],
+    'CMS & Practices': ['Payload CMS', 'Agile/Scrum', 'API Design', 'Scalable Architecture'],
   },
 
   contact: {
     title: 'Get In Touch',
-    subtitle: 'Have a product idea or need help building one? Let’s talk and shape it into something users love.',
+    subtitle: "Have a product idea, an AI project, or need a reliable engineer? Let's build something great together.",
     email: 'abhaypal1298@gmail.com',
+    phone: '+91 9935900264',
+    location: 'Uttar Pradesh, India',
   },
 };
 
-// Breakpoints for responsive design
+// Breakpoints
 export const BREAKPOINTS = {
   mobile: 320,
   tablet: 768,
@@ -158,13 +224,10 @@ export const Z_INDEX = {
   tooltip: 1100,
 };
 
-// Matrix rain configuration
+// Matrix config (kept for compatibility)
 export const MATRIX_CONFIG = {
-  particleCount: 100,
-  fallDuration: 20,
-  colors: ['#00ff00', '#00ff88', '#00ffff'],
-  opacity: {
-    min: 0.2,
-    max: 0.8,
-  },
+  particleCount: 0,
+  fallDuration: 0,
+  colors: [],
+  opacity: { min: 0, max: 0 },
 };

@@ -3,9 +3,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { GlassmorphicCard } from '@/components/ui/GlassmorphicCard';
 import { PORTFOLIO_DATA } from '@/lib/constants';
-import { MapPin, Mail, Download } from 'lucide-react';
+import { MapPin, Mail, ArrowRight } from 'lucide-react';
 
 export function AboutSection() {
   const [photoError, setPhotoError] = React.useState(false);
@@ -14,68 +13,71 @@ export function AboutSection() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.2, delayChildren: 0.1 },
+      transition: { staggerChildren: 0.15, delayChildren: 0.1 },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 24 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] },
+      transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] },
     },
   };
 
   return (
     <section
       id="about"
-      className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8"
+      className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8"
     >
+      {/* Section label */}
       <motion.div
-        className="mb-14 text-center"
-        initial={{ opacity: 0, y: 20 }}
+        className="mb-14"
+        initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.6 }}
       >
-        <h2 className="mb-4 text-4xl font-bold text-white md:text-5xl">
-          About <span className="text-neon-green">Me</span>
+        <p className="section-label mb-4">About</p>
+        <h2 className="text-4xl font-bold tracking-tight text-[#080503] md:text-5xl lg:text-6xl">
+          Engineer, builder,{' '}
+          <span className="font-serif italic font-normal text-[#5e534a]">& AI enthusiast</span>
         </h2>
-        <p className="mx-auto mb-4 max-w-2xl text-slate-400">
-          Engineer, builder, and AI enthusiast — shipping real products since 2024.
-        </p>
-        <div className="mx-auto h-1 w-20 bg-gradient-to-r from-neon-green to-cyan-400" />
       </motion.div>
 
       <motion.div
-        className="grid items-start gap-10 lg:grid-cols-[0.85fr_1.15fr]"
+        className="grid items-start gap-12 lg:grid-cols-[0.9fr_1.1fr]"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.15 }}
       >
-        {/* Left — Photo with floating badges */}
+        {/* Left — Photo */}
         <motion.div className="mx-auto w-full max-w-md" variants={itemVariants}>
           <div className="relative">
-            {/* Glow ring */}
-            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-neon-green/30 via-cyan-400/20 to-fuchsia-500/20 blur-xl opacity-60" />
-            <div className="relative overflow-hidden rounded-2xl border border-neon-green/20 bg-[#0c1331] p-3">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-[#111831]">
+            {/* Photo frame */}
+            <div className="relative overflow-hidden rounded-2xl border border-[#dad7d0] bg-[#f3f2ee]">
+              <div className="relative aspect-[4/5] overflow-hidden">
                 {!photoError ? (
                   <Image
                     src={PORTFOLIO_DATA.about.photo.src}
                     alt={PORTFOLIO_DATA.about.photo.alt}
                     fill
-                    sizes="(max-width: 1024px) 100vw, 33vw"
+                    sizes="(max-width: 1024px) 100vw, 40vw"
                     className="object-cover object-center"
                     onError={() => setPhotoError(true)}
                   />
                 ) : (
-                  <div className="flex h-full items-center justify-center px-6 text-center">
-                    <p className="text-sm text-slate-300">
-                      Add your photo at <span className="font-semibold text-white">`public/profile.PNG`</span>
-                    </p>
+                  <div className="flex h-full items-center justify-center bg-[#ecebe7] px-6 text-center">
+                    <div>
+                      <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-[#dad7d0]">
+                        <span className="text-2xl font-bold text-[#5e534a]">AP</span>
+                      </div>
+                      <p className="text-sm text-[#5e534a]">
+                        Add photo at <span className="font-semibold text-[#080503]">public/profile.PNG</span>
+                      </p>
+                    </div>
                   </div>
                 )}
               </div>
@@ -83,50 +85,50 @@ export function AboutSection() {
 
             {/* Floating badge — location */}
             <motion.div
-              className="absolute -bottom-4 -left-4 flex items-center gap-2 rounded-xl border border-white/10 bg-[#0a0e27]/90 px-4 py-2 backdrop-blur-sm"
-              initial={{ opacity: 0, x: -20 }}
+              className="absolute -bottom-4 -left-4 flex items-center gap-2 rounded-xl border border-[#dad7d0] bg-white px-4 py-2.5 shadow-card"
+              initial={{ opacity: 0, x: -16 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.5, duration: 0.5 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
             >
-              <MapPin size={13} className="text-neon-green" />
-              <span className="text-xs text-slate-300">Uttar Pradesh, India</span>
+              <MapPin size={13} className="text-[#5e534a]" />
+              <span className="text-xs font-medium text-[#5e534a]">Uttar Pradesh, India</span>
             </motion.div>
 
             {/* Floating badge — open to work */}
             <motion.div
-              className="absolute -top-4 -right-4 flex items-center gap-2 rounded-xl border border-neon-green/30 bg-neon-green/10 px-4 py-2 backdrop-blur-sm"
-              initial={{ opacity: 0, x: 20 }}
+              className="absolute -top-4 -right-4 flex items-center gap-2 rounded-xl border border-[#dad7d0] bg-white px-4 py-2.5 shadow-card"
+              initial={{ opacity: 0, x: 16 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.6, duration: 0.5 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
             >
-              <div className="h-2 w-2 animate-pulse rounded-full bg-neon-green" />
-              <span className="text-xs font-semibold text-neon-green">Open to Work</span>
+              <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse-dot" />
+              <span className="text-xs font-semibold text-[#080503]">Open to Work</span>
             </motion.div>
           </div>
         </motion.div>
 
         {/* Right — Text */}
-        <motion.div className="space-y-5 lg:pl-2" variants={itemVariants}>
+        <motion.div className="space-y-6 lg:pl-4" variants={itemVariants}>
           <div>
-            <h3 className="mb-1 text-2xl font-bold text-white">Abhay Pal</h3>
-            <p className="text-sm font-medium text-neon-green/80">AI-Focused Software Engineer · 2 Years Experience</p>
+            <h3 className="mb-1 text-2xl font-bold text-[#080503]">Abhay Pal</h3>
+            <p className="text-sm font-medium text-[#5e534a]">AI-Focused Software Engineer · 2 Years Experience</p>
           </div>
 
-          <p className="text-base leading-relaxed text-slate-300">
+          <p className="text-base leading-relaxed text-[#433830]">
             {PORTFOLIO_DATA.about.description}
           </p>
 
-          <p className="text-sm leading-relaxed text-slate-400">
+          <p className="text-sm leading-relaxed text-[#5e534a]">
             {PORTFOLIO_DATA.about.bio2}
           </p>
 
-          {/* Contact chips */}
+          {/* Contact chip */}
           <div className="flex flex-wrap gap-3 pt-1">
             <a
               href="mailto:abhaypal1298@gmail.com"
-              className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-slate-300 transition-all hover:border-neon-green/40 hover:text-neon-green"
+              className="flex items-center gap-2 rounded-full border border-[#dad7d0] bg-[#f3f2ee] px-4 py-2 text-xs font-medium text-[#5e534a] transition-all hover:border-[#080503] hover:text-[#080503]"
             >
               <Mail size={12} />
               abhaypal1298@gmail.com
@@ -136,19 +138,19 @@ export function AboutSection() {
           <div className="flex flex-wrap gap-3 pt-2">
             <motion.a
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-lg bg-neon-green px-6 py-3 text-sm font-bold text-[#0a0e27] transition-all duration-300 hover:bg-neon-green/90 hover:shadow-[0_0_20px_rgba(0,255,0,0.4)]"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center gap-2 rounded-full bg-[#080503] px-6 py-3 text-sm font-semibold text-[#fafaf9] transition-all duration-200 hover:bg-[#2a2520]"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
               Let&apos;s Collaborate
+              <ArrowRight size={14} />
             </motion.a>
             <motion.a
               href="#projects"
-              className="inline-flex items-center gap-2 rounded-lg border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-white/10"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center gap-2 rounded-full border border-[#dad7d0] bg-white px-6 py-3 text-sm font-semibold text-[#080503] transition-all duration-200 hover:bg-[#f3f2ee]"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <Download size={14} />
               View Projects
             </motion.a>
           </div>
@@ -157,33 +159,24 @@ export function AboutSection() {
 
       {/* Highlights */}
       <motion.div
-        className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-3"
+        className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-3"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
       >
         {PORTFOLIO_DATA.about.highlights.map((highlight, index) => (
-          <GlassmorphicCard
+          <motion.div
             key={index}
-            variant="bordered"
-            glowColor={index === 0 ? 'green' : index === 1 ? 'cyan' : 'magenta'}
-            className="p-6 text-center"
-            whileHover={{ scale: 1.02 }}
+            variants={itemVariants}
+            className="group rounded-xl border border-[#dad7d0] bg-white p-6 text-center transition-all duration-200 hover:border-[#b8b4ad] hover:shadow-card-hover"
+            whileHover={{ y: -4 }}
           >
-            <motion.div
-              variants={itemVariants}
-              initial={{ opacity: 0, scale: 0 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="mb-2 text-3xl font-bold text-white md:text-4xl">
-                {highlight.value}
-              </h3>
-              <p className="text-sm text-slate-400">{highlight.label}</p>
-            </motion.div>
-          </GlassmorphicCard>
+            <h3 className="mb-2 text-4xl font-bold tracking-tight text-[#080503]">
+              {highlight.value}
+            </h3>
+            <p className="text-sm text-[#5e534a]">{highlight.label}</p>
+          </motion.div>
         ))}
       </motion.div>
     </section>

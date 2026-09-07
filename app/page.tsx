@@ -6,12 +6,12 @@ import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
-import { AmbientBackground } from "@/components/layout/AmbientBackground";
 
 export default function Home() {
   return (
-    <div className="relative flex min-h-screen flex-col bg-[#0a0e27]">
-      <AmbientBackground />
+    <div className="relative flex min-h-screen flex-col bg-[#fafaf9]">
+      {/* Subtle noise texture */}
+      <div className="noise-overlay" />
       <Header />
       <main className="relative z-10 flex-1">
         <HeroSection />

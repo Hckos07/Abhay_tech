@@ -1,40 +1,39 @@
-// Color palette constants
+// Color palette constants - Light Mode
 export const COLORS = {
-  primary: '#00ff00',
-  secondary: '#00ff88',
-  accent: '#00ffff',
-  dark: '#ff00ff',
+  primary: '#080503',
+  secondary: '#5e534a',
+  accent: '#433830',
   bg: {
-    primary: '#0a0e27',
-    secondary: '#0f1535',
-    tertiary: '#1a1f3a',
-    glass: 'rgba(15, 21, 53, 0.7)',
+    primary: '#fafaf9',
+    secondary: '#f3f2ee',
+    tertiary: '#ecebe7',
+    card: '#ffffff',
   },
   text: {
-    primary: '#e2e8f0',
-    secondary: '#cbd5e1',
-    muted: '#94a3b8',
-    accent: '#00ff00',
+    primary: '#080503',
+    secondary: '#433830',
+    muted: '#5e534a',
+    subtle: '#7b6f66',
   },
-  glow: {
-    green: 'rgba(0, 255, 0, 0.3)',
-    cyan: 'rgba(0, 255, 255, 0.3)',
-    magenta: 'rgba(255, 0, 255, 0.3)',
+  border: {
+    default: '#dad7d0',
+    strong: '#b8b4ad',
   },
-  neon: {
-    green: '#00ff00',
-    cyan: '#00ffff',
-    magenta: '#ff00ff',
-    pink: '#ff1493',
+  accent_colors: {
+    emerald: '#059669',
+    blue: '#1a56db',
+    violet: '#7c3aed',
+    amber: '#d97706',
+    rose: '#e11d48',
   },
 };
 
 // Animation timing
 export const ANIMATION_TIMING = {
-  fast: 0.2,
-  normal: 0.3,
-  slow: 0.5,
-  verySlow: 0.8,
+  fast: 0.15,
+  normal: 0.25,
+  slow: 0.4,
+  verySlow: 0.6,
 };
 
 // Navigation links
@@ -54,7 +53,7 @@ export const SOCIAL_LINKS = [
   { name: 'Email', url: 'mailto:abhaypal1298@gmail.com', icon: 'Mail' },
 ];
 
-// Portfolio content structure (user fills in later)
+// Portfolio content
 export const PORTFOLIO_DATA = {
   hero: {
     name: 'Abhay Pal',
@@ -206,7 +205,7 @@ export const PORTFOLIO_DATA = {
   },
 };
 
-// Breakpoints for responsive design
+// Breakpoints
 export const BREAKPOINTS = {
   mobile: 320,
   tablet: 768,
@@ -225,13 +224,10 @@ export const Z_INDEX = {
   tooltip: 1100,
 };
 
-// Matrix rain configuration
+// Matrix config (kept for compatibility)
 export const MATRIX_CONFIG = {
-  particleCount: 100,
-  fallDuration: 20,
-  colors: ['#00ff00', '#00ff88', '#00ffff'],
-  opacity: {
-    min: 0.2,
-    max: 0.8,
-  },
+  particleCount: 0,
+  fallDuration: 0,
+  colors: [],
+  opacity: { min: 0, max: 0 },
 };

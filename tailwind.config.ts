@@ -7,92 +7,109 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-instrument)', 'Instrument Sans', 'Arial', 'sans-serif'],
+        serif: ['var(--font-instrument-serif)', 'Instrument Serif', 'Times New Roman', 'serif'],
+        mono: ['JetBrains Mono', 'Courier New', 'monospace'],
+      },
       colors: {
-        // Cyberpunk Neon Palette
-        matrix: {
-          50: '#f0ffee',
-          100: '#dcffdb',
-          200: '#b8ffb3',
-          300: '#88ff7a',
-          400: '#54ff41',
-          500: '#00ff00', // Primary neon green
-          600: '#00dd00',
-          700: '#00bb00',
-          800: '#008800',
-          900: '#005500',
+        // Optimus-inspired light palette
+        stone: {
+          50: '#fafaf9',
+          100: '#f5f5f4',
+          150: '#f3f2ee',
+          200: '#ecebe7',
+          300: '#e7e4dd',
+          400: '#dad7d0',
+          500: '#b8b4ad',
+          600: '#7b6f66',
+          700: '#5e534a',
+          800: '#433830',
+          900: '#080503',
         },
-        cyber: {
-          black: '#0a0e27', // Deep space black
-          dark: '#0f1535', // Dark blue-black
-          card: 'rgba(15, 21, 53, 0.7)', // Semi-transparent card bg
-          border: '#1a3d4d', // Subtle cyan-ish border
-          glow: '#00ff88', // Softer neon green
+        // Portfolio accent colors for light mode
+        accent: {
+          blue: '#1a56db',
+          'blue-light': '#eff6ff',
+          'blue-border': '#bfdbfe',
+          emerald: '#059669',
+          'emerald-light': '#ecfdf5',
+          'emerald-border': '#a7f3d0',
+          violet: '#7c3aed',
+          'violet-light': '#f5f3ff',
+          'violet-border': '#ddd6fe',
+          amber: '#d97706',
+          'amber-light': '#fffbeb',
+          'amber-border': '#fde68a',
+          rose: '#e11d48',
+          'rose-light': '#fff1f2',
+          'rose-border': '#fecdd3',
         },
-        neon: {
-          green: '#00ff00',
-          cyan: '#00ffff',
-          magenta: '#ff00ff',
-          pink: '#ff1493',
-        },
-      },
-      backgroundColor: {
-        glass: 'rgba(255, 255, 255, 0.05)',
-        'glass-dark': 'rgba(0, 0, 0, 0.4)',
-      },
-      borderColor: {
-        glass: 'rgba(255, 255, 255, 0.1)',
-        'glass-strong': 'rgba(255, 255, 255, 0.2)',
-      },
-      textColor: {
-        glow: '#00ff88',
-        neon: '#00ff00',
       },
       boxShadow: {
-        'glow-green': '0 0 10px rgba(0, 255, 0, 0.3), 0 0 20px rgba(0, 255, 0, 0.1)',
-        'glow-green-lg': '0 0 20px rgba(0, 255, 0, 0.5), 0 0 40px rgba(0, 255, 0, 0.2)',
-        'glow-cyan': '0 0 10px rgba(0, 255, 255, 0.3), 0 0 20px rgba(0, 255, 255, 0.1)',
-        'glow-magenta': '0 0 10px rgba(255, 0, 255, 0.3), 0 0 20px rgba(255, 0, 255, 0.1)',
+        'card': '0 1px 3px rgba(8, 5, 3, 0.06), 0 1px 2px rgba(8, 5, 3, 0.04)',
+        'card-hover': '0 4px 24px rgba(8, 5, 3, 0.08), 0 2px 8px rgba(8, 5, 3, 0.04)',
+        'card-lg': '0 8px 40px rgba(8, 5, 3, 0.1)',
+        'input-focus': '0 0 0 3px rgba(8, 5, 3, 0.08)',
       },
       keyframes: {
-        'pulse-glow': {
-          '0%, 100%': { opacity: '1', boxShadow: '0 0 10px rgba(0, 255, 0, 0.5)' },
-          '50%': { opacity: '0.7', boxShadow: '0 0 20px rgba(0, 255, 0, 0.8)' },
-        },
-        'matrix-rain': {
-          '0%': { transform: 'translateY(-100%)', opacity: '1' },
-          '100%': { transform: 'translateY(100vh)', opacity: '0' },
-        },
-        'neon-flicker': {
-          '0%, 19%, 21%, 23%, 25%, 54%, 56%, 100%': { opacity: '1' },
-          '20%, 24%, 55%': { opacity: '0.4' },
-        },
         'fade-in-up': {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-        'glow-box': {
-          '0%, 100%': { borderColor: 'rgba(0, 255, 0, 0.3)' },
-          '50%': { borderColor: 'rgba(0, 255, 0, 0.8)' },
+        'fade-in': {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        'slide-in-left': {
+          '0%': { opacity: '0', transform: 'translateX(-20px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        'slide-in-right': {
+          '0%': { opacity: '0', transform: 'translateX(20px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
         },
         shimmer: {
           '0%': { backgroundPosition: '-1000px 0' },
           '100%': { backgroundPosition: '1000px 0' },
         },
+        'scroll-x': {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        'scroll-x-reverse': {
+          '0%': { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
+        'pulse-dot': {
+          '0%, 100%': { opacity: '1', transform: 'scale(1)' },
+          '50%': { opacity: '0.5', transform: 'scale(0.85)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-6px)' },
+        },
       },
       animation: {
-        'pulse-glow': 'pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'matrix-rain': 'matrix-rain 20s linear infinite',
-        'neon-flicker': 'neon-flicker 0.15s infinite',
-        'fade-in-up': 'fade-in-up 0.6s ease-out',
-        'glow-box': 'glow-box 3s ease-in-out infinite',
+        'fade-in-up': 'fade-in-up 0.6s ease-out both',
+        'fade-in': 'fade-in 0.4s ease-out both',
+        'slide-in-left': 'slide-in-left 0.5s ease-out both',
+        'slide-in-right': 'slide-in-right 0.5s ease-out both',
         shimmer: 'shimmer 2s infinite',
+        'scroll-x': 'scroll-x 30s linear infinite',
+        'scroll-x-reverse': 'scroll-x-reverse 30s linear infinite',
+        'pulse-dot': 'pulse-dot 2s ease-in-out infinite',
+        float: 'float 4s ease-in-out infinite',
       },
-      backdropBlur: {
-        glass: '10px',
-      },
-      opacity: {
-        glass: '0.05',
-        'glass-light': '0.1',
+      borderRadius: {
+        DEFAULT: '0.25rem',
+        sm: '0.125rem',
+        md: '0.25rem',
+        lg: '0.375rem',
+        xl: '0.5rem',
+        '2xl': '0.75rem',
+        '3xl': '1rem',
+        full: '9999px',
       },
     },
   },

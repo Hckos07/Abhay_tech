@@ -3,18 +3,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { PORTFOLIO_DATA } from '@/lib/constants';
-import dynamic from 'next/dynamic';
-import { ChevronDown, Zap, Brain, Code2 } from 'lucide-react';
-
-const MatrixRain = dynamic(() =>
-  import('./MatrixRain').then((mod) => mod.MatrixRain),
-  { ssr: false }
-);
+import { ArrowRight, Brain, Code2, Zap } from 'lucide-react';
 
 const floatingBadges = [
-  { icon: <Brain size={13} />, label: 'AI / RAG Systems', delay: 1.4, x: '-8%', y: '25%' },
-  { icon: <Code2 size={13} />, label: 'Full-Stack Dev', delay: 1.6, x: '88%', y: '30%' },
-  { icon: <Zap size={13} />, label: 'Real-Time Systems', delay: 1.8, x: '80%', y: '65%' },
+  { icon: Brain, label: 'AI / RAG Systems', delay: 0.8, x: '-5%', y: '28%' },
+  { icon: Code2, label: 'Full-Stack Dev', delay: 1.0, x: '87%', y: '32%' },
+  { icon: Zap, label: 'Real-Time Systems', delay: 1.2, x: '82%', y: '62%' },
 ];
 
 export function HeroSection() {
@@ -34,8 +28,8 @@ export function HeroSection() {
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 0.12,
-        duration: 0.9,
+        delay: i * 0.1,
+        duration: 0.8,
         ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
       },
     }),
@@ -44,64 +38,73 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-transparent pb-16 pt-24"
+      className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#fafaf9] pb-16 pt-24"
     >
-      {/* Matrix Rain Background */}
-      <div className="absolute inset-0 opacity-20">
-        <MatrixRain />
-      </div>
-
-      {/* Animated grid overlay */}
-      <div className="absolute inset-0 opacity-[0.04]">
+      {/* Subtle grid background — Optimus style */}
+      <div className="absolute inset-0 opacity-[0.035]" aria-hidden="true">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
-              <path d="M 50 0 L 0 0 0 50" fill="none" stroke="currentColor" strokeWidth="0.5" />
+            <pattern id="hero-grid" width="60" height="60" patternUnits="userSpaceOnUse">
+              <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#080503" strokeWidth="0.5" />
             </pattern>
           </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
+          <rect width="100%" height="100%" fill="url(#hero-grid)" />
         </svg>
       </div>
 
-      {/* Radial glow center */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="h-[600px] w-[600px] rounded-full bg-neon-green/5 blur-[120px]" />
+      {/* Warm radial gradient center */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
+        <div className="h-[700px] w-[700px] rounded-full bg-[#ecebe7]/60 blur-[120px]" />
       </div>
 
       {/* Floating skill badges */}
-      {floatingBadges.map((badge, i) => (
-        <motion.div
-          key={i}
-          className="absolute hidden lg:flex items-center gap-2 rounded-full border border-white/10 bg-[#0a0e27]/80 px-4 py-2 text-xs text-slate-300 backdrop-blur-sm"
-          style={{ left: badge.x, top: badge.y }}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={isIntroDone ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-          transition={{ delay: badge.delay, duration: 0.6 }}
-        >
-          <span className="text-neon-green">{badge.icon}</span>
-          {badge.label}
-        </motion.div>
-      ))}
+      {floatingBadges.map((badge, i) => {
+        const Icon = badge.icon;
+        return (
+          <motion.div
+            key={i}
+            className="absolute hidden lg:flex items-center gap-2 rounded-full border border-[#dad7d0] bg-white px-4 py-2 text-xs font-medium text-[#5e534a] shadow-card"
+            style={{ left: badge.x, top: badge.y }}
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={isIntroDone ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.85 }}
+            transition={{ delay: badge.delay, duration: 0.5 }}
+          >
+            <Icon size={13} className="text-[#080503]" />
+            {badge.label}
+          </motion.div>
+        );
+      })}
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
         {/* Badge */}
         <motion.div
-          className="mb-6 inline-flex items-center gap-2 rounded-full border border-neon-green/30 bg-neon-green/10 px-4 py-1.5"
+          className="mb-8 inline-flex items-center gap-2 rounded-full border border-[#dad7d0] bg-white px-4 py-1.5 shadow-sm"
           custom={0}
           variants={titleVariants}
           initial="hidden"
           animate={isIntroDone ? 'visible' : 'hidden'}
         >
-          <div className="h-1.5 w-1.5 animate-pulse rounded-full bg-neon-green" />
-          <span className="text-xs font-semibold tracking-widest text-neon-green uppercase">
+          <div className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse-dot" />
+          <span className="text-xs font-semibold tracking-widest text-[#5e534a] uppercase">
             {PORTFOLIO_DATA.hero.badge}
           </span>
         </motion.div>
 
-        {/* Name */}
+        {/* Eyebrow */}
+        <motion.p
+          className="mb-4 section-label justify-center"
+          custom={0.5}
+          variants={titleVariants}
+          initial="hidden"
+          animate={isIntroDone ? 'visible' : 'hidden'}
+        >
+          AI-Focused Software Engineer
+        </motion.p>
+
+        {/* Name — Optimus large editorial style */}
         <motion.h1
-          className="mb-3 text-6xl font-bold tracking-tight text-white sm:text-7xl lg:text-8xl"
+          className="mb-6 text-6xl font-bold tracking-tight text-[#080503] sm:text-7xl lg:text-8xl xl:text-9xl"
           custom={1}
           variants={titleVariants}
           initial="hidden"
@@ -110,9 +113,9 @@ export function HeroSection() {
           {PORTFOLIO_DATA.hero.name}
         </motion.h1>
 
-        {/* Title */}
+        {/* Title — serif italic accent */}
         <motion.p
-          className="mb-6 text-xl font-semibold text-neon-green sm:text-2xl"
+          className="mb-6 text-xl font-serif italic text-[#5e534a] sm:text-2xl"
           custom={2}
           variants={titleVariants}
           initial="hidden"
@@ -123,7 +126,7 @@ export function HeroSection() {
 
         {/* Subtitle */}
         <motion.p
-          className="mx-auto mb-10 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-lg"
+          className="mx-auto mb-10 max-w-2xl text-base leading-relaxed text-[#7b6f66] sm:text-lg"
           custom={3}
           variants={titleVariants}
           initial="hidden"
@@ -134,7 +137,7 @@ export function HeroSection() {
 
         {/* CTA Buttons */}
         <motion.div
-          className="flex flex-wrap justify-center gap-4"
+          className="flex flex-wrap justify-center gap-3"
           custom={4}
           variants={titleVariants}
           initial="hidden"
@@ -142,22 +145,38 @@ export function HeroSection() {
         >
           <motion.a
             href="#projects"
-            className="group relative overflow-hidden rounded-lg bg-neon-green px-8 py-3.5 text-sm font-bold text-[#0a0e27] shadow-[0_0_20px_rgba(0,255,0,0.3)] transition-all duration-300 hover:shadow-[0_0_35px_rgba(0,255,0,0.5)]"
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.96 }}
+            className="group inline-flex items-center gap-2 rounded-full bg-[#080503] px-7 py-3.5 text-sm font-semibold text-[#fafaf9] transition-all duration-200 hover:bg-[#2a2520]"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
           >
-            <span className="relative z-10">{PORTFOLIO_DATA.hero.cta}</span>
-            <div className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-300 group-hover:translate-x-0" />
+            {PORTFOLIO_DATA.hero.cta}
+            <ArrowRight size={14} className="transition-transform duration-200 group-hover:translate-x-1" />
           </motion.a>
 
           <motion.a
             href="#about"
-            className="rounded-lg border border-white/20 bg-white/5 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-neon-green/40 hover:bg-white/10"
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.96 }}
+            className="inline-flex items-center gap-2 rounded-full border border-[#dad7d0] bg-white px-7 py-3.5 text-sm font-semibold text-[#080503] transition-all duration-200 hover:bg-[#f3f2ee]"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
           >
             About Me
           </motion.a>
+        </motion.div>
+
+        {/* Stats row — Optimus-style metrics */}
+        <motion.div
+          className="mt-16 flex flex-wrap justify-center gap-8 border-t border-[#dad7d0] pt-10"
+          custom={5}
+          variants={titleVariants}
+          initial="hidden"
+          animate={isIntroDone ? 'visible' : 'hidden'}
+        >
+          {PORTFOLIO_DATA.about.highlights.map((h, i) => (
+            <div key={i} className="text-center">
+              <p className="text-3xl font-bold tracking-tight text-[#080503]">{h.value}</p>
+              <p className="mt-1 text-xs font-medium uppercase tracking-wider text-[#7b6f66]">{h.label}</p>
+            </div>
+          ))}
         </motion.div>
       </div>
 
@@ -167,19 +186,22 @@ export function HeroSection() {
         className="absolute bottom-8 left-1/2 z-20 -translate-x-1/2"
         initial={{ opacity: 0 }}
         animate={isIntroDone ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ delay: 2, duration: 0.8 }}
+        transition={{ delay: 1.8, duration: 0.8 }}
       >
         <motion.div
-          className="flex flex-col items-center gap-1 text-slate-500"
-          animate={{ y: [0, 8, 0] }}
+          className="flex flex-col items-center gap-1.5 text-[#b8b4ad]"
+          animate={{ y: [0, 6, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
         >
           <span className="text-xs tracking-widest uppercase">Scroll</span>
-          <ChevronDown size={16} />
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </motion.div>
       </motion.a>
 
-      <div className="absolute top-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-neon-green/30 to-transparent" />
+      {/* Bottom border line */}
+      <div className="absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-[#dad7d0] to-transparent" />
     </section>
   );
 }
